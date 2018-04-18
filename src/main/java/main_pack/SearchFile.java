@@ -75,7 +75,7 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 		/**
 		 * Create the report directory in the determined path,
 		 * create the report file and print the
-		 * list file's list on the console.
+		 * file's list on the console.
 		 * 
 		 * @param list : ArrayList<String> to export to file
 		 */
