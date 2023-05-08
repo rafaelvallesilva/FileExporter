@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
+import domain.Arquivo;
+
 /**
  * Represents a file's search that list paths and export it to a text file.
  * 
@@ -27,6 +29,8 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 	// List of paths founded
 	private List<String> foundFilesList = new ArrayList<>();
 
+	private List<Arquivo> arquivos = new ArrayList<>();
+
 	// Constructor that receive a String with fileName
 	public SearchFile(String fileName) {
 		this.fileName = fileName;
@@ -42,6 +46,12 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 	public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 		// if (file.getFileName().toString().contains(fileName)) {
 		if (file.getFileName().toString().toUpperCase().endsWith(fileName)) {
+
+			String nomeArquivo = file.getFileName().toString();
+			Arquivo arquivo = new Arquivo();
+			arquivo.setFonte(nomeArquivo);
+			arquivos.add(arquivo);
+
 			System.out.println("File found: " + file);
 
 			String pathString = file.getParent().toString();
@@ -58,7 +68,7 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 								+ file.getFileName().toString() + "'> "
 								+ file.getFileName().toString() + "</a> <br>");
 			} catch (Exception e) {
-				// TODO: handle exception
+				
 			}
 
 		}
