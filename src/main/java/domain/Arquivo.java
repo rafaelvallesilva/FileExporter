@@ -1,14 +1,16 @@
 package domain;
 
-public class Arquivo {
+import java.io.Serializable;
+
+public class Arquivo implements Serializable {
 
 	private String fonte;
 	private String modulo;
 	private String rotina;
 	private String data;
 	private String obs;
-	
-	public Arquivo(String fonte, String modulo, String rotina, 
+
+	public Arquivo(String fonte, String modulo, String rotina,
 			String data, String obs) {
 		this.fonte = fonte;
 		this.modulo = modulo;
@@ -16,7 +18,7 @@ public class Arquivo {
 		this.data = data;
 		this.obs = obs;
 	}
-	
+
 	public Arquivo() {
 	}
 
@@ -65,5 +67,5 @@ public class Arquivo {
 		return "Arquivo [fonte=" + fonte + ", modulo=" + modulo + ", rotina=" + rotina + ", data=" + data + ", obs="
 				+ obs + "]";
 	}
-	
+
 }

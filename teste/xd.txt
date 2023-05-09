@@ -1,0 +1,54 @@
+#INCLUDE "protheus.ch",null,null,null,null
+#INCLUDE "RWMAKE.CH",null,null,null,null
+//,null,null,null,null
+/*,null,null,null,null
+|-------------------------------------------------------------------------------|,null,null,null,null
+|   Programa    |  AJUSSC7  |Autor  |Eli Eduardo Lourenco   | Data | 24/01/2022 |,null,null,null,null
+|-------------------------------------------------------------------------------|,null,null,null,null
+|   Descricao   | User Function para levar para os pedidos de compra o campo    |,null,null,null,null
+|               | de codigo do usuario da SC atendida pelo Pedido de Compra     | ,null,null,null,null
+|-------------------------------------------------------------------------------|,null,null,null,null
+|   Tabelas     | SC7 - Pedido de Compras e SC1 - Solicitacao de Compra         |,null,null,null,null
+|-------------------------------------------------------------------------------|,null,null,null,null
+|   Uso         |   Especifico - Corpus Saneamento e Obras                      |                    ÂºÂ±Â±,null,null,null,null
+|-------------------------------------------------------------------------------|,null,null,null,null
+*/,null,null,null,null
+//***************************//,null,null,null,null
+   User Function AJUSSC7() ,null,null,null,null
+//***************************//,null,null,null,null
+//,null,null,null,null
+Local aArea     	:= GetArea(),null,null,null,null
+_nsc7   := 0,null,null,null,null
+DbSelectArea("SC7"),null,null,null,null
+DbSetOrder(1),null,null,null,null
+While   SC7->(!Eof()) ,null,null,null,null
+        //,null,null,null,null
+        IF  !Empty(SC7->C7_NUMSC) ,null,null,null,null
+            //,null,null,null,null
+            DbSelectArea("SC1"),null,null,null,null
+            DbSetOrder(6),null,null,null,null
+            IF  DbSeek(xFilial("SC1")+SC7->C7_NUM+SC7->C7_ITEM),null,null,null,null
+                //,null,null,null,null
+                _cuser  := SC1->C1_USER ,null,null,null,null
+                //,null,null,null,null
+                DbSelectArea("SC7"),null,null,null,null
+                RecLock("SC7", .F. ),null,null,null,null
+                    //,null,null,null,null
+			        SC7->C7_ZUSERSC := _cuser,null,null,null,null
+                    //,null,null,null,null
+                    _nsc7   := _nsc7 +1,null,null,null,null
+                    //,null,null,null,null
+			    MsUnLock(),null,null,null,null
+                //,null,null,null,null
+            Endif,null,null,null,null
+            //,null,null,null,null
+            //SC7->(DbSkip()),null,null,null,null
+            //,null,null,null,null
+        Endif ,null,null,null,null
+        //,null,null,null,null
+        SC7->(DbSkip()),null,null,null,null
+Enddo         ,null,null,null,null
+//,null,null,null,null
+MsgAlert("Ajustado "+cValTochar(_nsc7)+" Pedidos de Compra com o usuario da SC", "Atencao!!!"),null,null,null,null
+//,null,null,null,null
+Return,null,null,null,null
