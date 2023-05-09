@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import util.ReadFile;
 import util.SearchFile;
 import util.StringListToFile;
 
@@ -25,6 +26,11 @@ public class App {
 		// String to receive the Keyboard entry
 		String keyEntry = new String();
 
+		
+//		String conteudo = new ReadFile().read("exports\\export-2023-05-03\\report.txt");
+		
+		
+		
 		/**
 		 * Looping soliciting data from the keyboard.
 		 */
