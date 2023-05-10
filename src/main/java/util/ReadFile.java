@@ -16,8 +16,6 @@ public class ReadFile extends SimpleFileVisitor<Path>{
 			e.printStackTrace();
 		}
 		
-		System.out.println(content);
-		
 		return content;
 	}
 	
