@@ -18,11 +18,8 @@ public class App {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		// Root path of the search
 		Path dir = Paths.get("C:\\Users\\bruno.pansarim\\Documents\\Protheus\\Atual\\Compras");
-		// Path dir = Paths.get("C:\\Users\\rafael.silva\\Documents\\GitHub");
 
-		// String to receive the Keyboard entry
 		String keyEntry = new String();
 
 		/**

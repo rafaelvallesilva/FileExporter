@@ -3,6 +3,13 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "main.App",
+			"projectName": "FileExporter"
+		},
+		{
+			"type": "java",
 			"name": "FileToString",
 			"request": "launch",
 			"mainClass": "util.FileToString",

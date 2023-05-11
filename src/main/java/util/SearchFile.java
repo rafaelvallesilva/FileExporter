@@ -44,7 +44,6 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 	 */
 	@Override
 	public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-		// if (file.getFileName().toString().contains(fileName)) {
 		if (file.getFileName().toString().toUpperCase().endsWith(fileName)) {
 
 			String nomeArquivo = file.getFileName().toString();

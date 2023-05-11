@@ -10,93 +10,78 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import util.StringUtils;
 
 import domain.Arquivo;
 
 public class FileToString {
 
     public static void main(String[] args) throws ParseException {
-        
-        // Locale.setDefault(Locale.pt);-
-        Scanner scanner = new Scanner(System.in);
 
-    	List<Arquivo> arquivos = new ArrayList<>();
+        // Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digita o caminho: ");
-        String sourceFileString = scanner.nextLine();
+        List<Arquivo> arquivos = new ArrayList<>();
 
-        // File sourceFile = new File(sourceFileString);
-        // String sourceFolderString = sourceFile.getParent();
+        // System.out.println("Digita o caminho: ");
+        // String sourceFileString = scanner.nextLine();
 
-        File file = new File("teste\\xd.txt");
+        // File file = new File("teste\\xd.txt");
 
-        try {
+        // try {
 
-            file.createNewFile();
-            
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
+        // file.createNewFile();
 
-        String targetFileString = "teste\\xd.txt";
+        // } catch (Exception e) {
+        // e.getStackTrace();
+        // }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(sourceFileString))) {
+        // try (BufferedReader br = new BufferedReader(new FileReader(sourceFileString))) {
 
-            String arquivoPrw = br.readLine();
-            while (arquivoPrw != null) {
-                
-            String[] fields = arquivoPrw.split("//s*//--([A-Za-z1-9_/-]+)(/s*:/s*(.*?);)?/s*//");
-            
-            String fonte = fields[0];
-            // String modulo = fields[1];
-            // String rotina = fields[2];
-            // String data = fields[3];
-            // String obs = fields[4];
-            
-            arquivos.add(new Arquivo(fonte, null, null, null, null));
-            
-                // System.out.println(arquivos);
-                // System.out.println(arquivoPrw);
-                // System.out.println(fields);
-                
-                arquivoPrw = br.readLine();
-            }
+            String conteudo = new ReadFile().read("teste.txt");
+            String[] array = StringUtils.splitCommentBlock(conteudo);
+            // System.out.println(array[1]);
 
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(targetFileString))) {
-                for (Arquivo item: arquivos) {
-                    bw.write(item.getFonte() + "," + item.getModulo() + "," + item.getRotina() + "," + item.getData() + "," + item.getObs());
-                    bw.newLine();
-            }
-                System.out.println(targetFileString + " Created");
+            String[] descricao = StringUtils.splitDescricao(array[1]);
 
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-        
 
-        } catch (IOException e) {
-            System.out.println("error: " +e.getMessage());
-        }
-         finally {
-            if (scanner != null) {
-                scanner.close();
-            }
+            String fonte = descricao[1] + descricao[2];
+
+
+            String modulo = descricao[14] + descricao[15];
+            String rotina = descricao[2];
+            String data = descricao[6];
+            String obs = descricao[8] + descricao[9] + descricao[10] + descricao[11];
+
+            System.out.println(obs);
+
+            // for (String string : descricao) {
+            //     System.out.println(string);
+            // }
+
+            arquivos.add(new Arquivo(fonte, modulo, rotina, data, obs));
+
+
+            // try (BufferedWriter bw = new BufferedWriter(new
+            // FileWriter(sourceFileString))) {
+            // for (Arquivo item: arquivos) {
+            // bw.write(item.getFonte() + "," + item.getModulo() + "," + item.getRotina() +
+            // "," + item.getData() + "," + item.getObs());
+            // bw.newLine();
+            // }
+            // System.out.println(sourceFileString + " Created");
+
+            // } catch (Exception e) {
+            // System.out.println("Error: " + e.getMessage());
+            // }
+
+            // } catch (IOException e) {
+            // System.out.println("error: " +e.getMessage());
+            // }
+            // finally {
+            // if (scanner != null) {
+            // scanner.close();
+            // }
+            // }
         }
     }
-}
 
-
-
-                        // Lê o arquivo, mas apenas linha por linha
-
-    // public static void main(String[] args) throws IOException {
-    //     try (FileReader fr = new FileReader("C:\\Users\\bruno.pansarim\\Documents\\Protheus\\Atual\\Compras\\ajussc7.prw")) {
-    //         int i;
-
-    //         while ((i = fr.read()) != -1) {
-
-    //             System.out.println((char)i);
-
-    //         }
-    //     }
-    // }
