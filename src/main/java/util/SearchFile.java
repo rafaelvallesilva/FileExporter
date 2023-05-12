@@ -1,6 +1,7 @@
 package util;
 
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -63,11 +64,13 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 
 			System.out.println("Adding " + file + " to list");
 			try {
-				foundFilesList.add(
-						"<a href = 'https://github.com/Corpus-Saneamento-e-Obras-Ltda/Protheus/blob/main/Atual/"
-								+ diretorio + "/"
-								+ file.getFileName().toString() + "'> "
-								+ file.getFileName().toString() + "</a> <br>");
+
+				String url = "https://github.com/Corpus-Saneamento-e-Obras-Ltda/Protheus/blob/main/Atual";
+				String fileName = file.getFileName().toString();
+				String htmlLink = HtmlMaker.criaLink(fileName, url, diretorio, fileName);
+
+				foundFilesList.add(htmlLink); 
+
 			} catch (Exception e) {
 				
 			}

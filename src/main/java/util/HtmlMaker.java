@@ -17,17 +17,23 @@ public class HtmlMaker {
             "<table>" +
             "<tr class='título'>" +
             "<th> FONTE / PATCH </th>" +
-            "<th> MODULO </th>" +
-            "<th> ROTINA(S) </th>" +
-            "<th> DATA COMPILAÇÃO </th>" +
-            "<th> OBSERVAÇÃO </th>" +
+            "<th> DESCRICAO </th>" +
+            // "<th> ROTINA(S) </th>" +
+            // "<th> DATA COMPILAÇÃO </th>" +
+            // "<th> OBSERVAÇÃO </th>" +
             "</tr>";
 
 
-    public static String criaLink(String url, String texto) {
+    public static String criaLink(String texto, String... url) {
+        StringBuilder sbUrl = new StringBuilder(); 
+		for (String s : url) {
+            sbUrl.append(s);
+            sbUrl.append("/");
+		}
+
         StringBuilder sb = new StringBuilder();
         sb.append("<a href=\"");
-        sb.append(url);
+        sb.append(sbUrl); //add tostring 
         sb.append("\">");
         sb.append(texto);
         sb.append("</a>");
