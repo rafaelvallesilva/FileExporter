@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 import domain.Arquivo;
+import util.HtmlMaker;
+
 
 /**
  * Represents a file's search that list paths and export it to a text file.
@@ -44,7 +46,7 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 	 */
 	@Override
 	public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-		if (file.getFileName().toString().toUpperCase().endsWith(fileName)) {
+		if (file.getFileName().toString().toUpperCase().toLowerCase().endsWith(fileName)) {
 
 			String nomeArquivo = file.getFileName().toString();
 			Arquivo arquivo = new Arquivo();
