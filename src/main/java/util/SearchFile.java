@@ -1,7 +1,6 @@
 package util;
 
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 import domain.Arquivo;
-import util.HtmlMaker;
 
 
 /**
@@ -30,7 +28,8 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 	private String fileName;
 
 	// List of paths founded
-	private List<String> foundFilesList = new ArrayList<>();
+	private List<String> linhas = new ArrayList<>();
+
 
 	private List<Arquivo> arquivos = new ArrayList<>();
 
@@ -69,7 +68,10 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 				String fileName = file.getFileName().toString();
 				String htmlLink = HtmlMaker.criaLink(fileName, url, diretorio, fileName);
 
-				foundFilesList.add(htmlLink); 
+				String[] colunas = HtmlMaker.criaColunas(htmlLink, StringUtils.convert(file));
+				String linha = HtmlMaker.criaLinha(colunas);
+
+				linhas.add(linha); 
 
 			} catch (Exception e) {
 				
@@ -88,12 +90,12 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 		this.fileName = fileName;
 	}
 
-	public List<String> getFoundFilesList() {
-		return foundFilesList;
+	public List<String> getlinhas() {
+		return linhas;
 	}
 
-	public void setFoundFilesList(List<String> foundFilesList) {
-		this.foundFilesList = foundFilesList;
+	public void setlinhas(List<String> linhas) {
+		this.linhas = linhas;
 	}
 
 }

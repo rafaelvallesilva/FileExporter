@@ -46,7 +46,7 @@ public class App {
 			}
 
 			// Print founded files list
-			StringListToFile.exportList(searchFile.getFoundFilesList());
+			StringListToFile.exportList(searchFile.getlinhas());
 			
 			
 		}

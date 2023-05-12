@@ -1,18 +1,15 @@
 package util;
 
+import java.nio.file.Path;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
-import domain.Arquivo;
 
 public class FileToString {
 
-    public static void main(String[] args) throws ParseException {
+    public static String convert(Path file) throws ParseException {
 
         // Scanner scanner = new Scanner(System.in);
 
-        List<Arquivo> arquivos = new ArrayList<>();
+        // List<Arquivo> arquivos = new ArrayList<>();
 
         // System.out.println("Digita o caminho: ");
         // String sourceFileString = scanner.nextLine();
@@ -29,27 +26,28 @@ public class FileToString {
 
         // try (BufferedReader br = new BufferedReader(new FileReader(sourceFileString))) {
 
-            String conteudo = new ReadFile().read("teste.txt");
+            String conteudo = new ReadFile().read(file);
             String[] array = StringUtils.splitCommentBlock(conteudo);
             // System.out.println(array[1]);
 
-            String[] descricao = StringUtils.splitDescricao(array[1]);
+            String descricao = array[1];
+            // String[] descricao = StringUtils.splitDescricao(array[1]);
 
 
-            String fonte = descricao[1] + descricao[2];
+            // String fonte = descricao[1] + descricao[2];
 
 
-            String modulo = descricao[14] + descricao[15];
-            String rotina = descricao[2];
-            String data = descricao[6];
-            String obs = descricao[8] + descricao[9] + descricao[10] + descricao[11];
+            // String modulo = descricao[14] + descricao[15];
+            // String rotina = descricao[2];
+            // String data = descricao[6];
+            // String obs = descricao[8] + descricao[9] + descricao[10] + descricao[11];
 
 
-            for (String string : descricao) {
-                System.out.println(string);
-            }
+            // for (String string : descricao) {
+            //     System.out.println(string);
+            // }
 
-            arquivos.add(new Arquivo(fonte, modulo, rotina, data, obs));
+            // arquivos.add(new Arquivo(fonte, modulo, rotina, data, obs));
 
 
             // try (BufferedWriter bw = new BufferedWriter(new
@@ -73,6 +71,7 @@ public class FileToString {
             // scanner.close();
             // }
             // }
+            return descricao;
         }
     }
 
