@@ -46,7 +46,8 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 	 */
 	@Override
 	public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-		if (file.getFileName().toString().toUpperCase().toLowerCase().endsWith(fileName)) {
+		if (file.getFileName().toString().toUpperCase().endsWith(fileName) ||
+		(file.getFileName().toString().toLowerCase().endsWith(fileName))) {
 
 			String nomeArquivo = file.getFileName().toString();
 			Arquivo arquivo = new Arquivo();
@@ -96,6 +97,14 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 
 	public void setlinhas(List<String> linhas) {
 		this.linhas = linhas;
+	}
+
+	@Override
+	public String toString() {
+
+		return "fileName: " + fileName + "\n" + 
+				"linhas: " + linhas + "\n" + 
+				"arquivos: " + arquivos;
 	}
 
 }

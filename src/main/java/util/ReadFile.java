@@ -1,6 +1,7 @@
 package util;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
@@ -11,7 +12,8 @@ public class ReadFile extends SimpleFileVisitor<Path>{
 		String content = "";
 		
 		try {
-			content = Files.readString(path);
+			content = Files.readString(path, StandardCharsets.ISO_8859_1);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

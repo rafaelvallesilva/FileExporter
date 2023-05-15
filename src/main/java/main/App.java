@@ -18,7 +18,7 @@ public class App {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		Path dir = Paths.get("C:\\Users\\bruno.pansarim\\Documents\\Protheus\\Atual\\Compras");
+		Path dir = Paths.get("C:\\Users\\bruno.pansarim\\Documents\\GitHub\\Protheus\\Atual\\Contratos");
 
 		String keyEntry = new String();
 
