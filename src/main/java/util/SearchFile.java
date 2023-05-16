@@ -72,13 +72,14 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 				String[] colunas = HtmlMaker.criaColunas(htmlLink, StringUtils.convert(file));
 				String linha = HtmlMaker.criaLinha(colunas);
 
-				linhas.add(linha); 
-
+				linhas.add(linha);
+				
 			} catch (Exception e) {
 				
 			}
 
 		}
+
 		return FileVisitResult.CONTINUE;
 
 	}

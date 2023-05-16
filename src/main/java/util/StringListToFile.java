@@ -33,7 +33,6 @@ public class StringListToFile {
 
 			Files.createDirectories(reportPath);
 			reportPath = Files.write(reportPath.resolve("arquivos.html"), list, StandardOpenOption.CREATE);
-			System.out.println("Number of files founded: " + list.size());
 			System.out.println("List exported to: " + reportPath.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -54,5 +53,8 @@ public class StringListToFile {
 		String date = sdf.format(new Date());
 		
 		return date;
+	}
+
+	public static void criaTabela() {
 	}
 }

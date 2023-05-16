@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
+import util.HtmlMaker;
 import util.SearchFile;
 import util.StringListToFile;
 
@@ -46,7 +49,20 @@ public class App {
 			}
 
 			// Print founded files list
-			StringListToFile.exportList(searchFile.getlinhas());
+
+			List<String> linhas = new ArrayList<>();
+			linhas.add(HtmlMaker.CABECALHO);
+			linhas.add(HtmlMaker.TOP_BODY);
+
+			for (String linha : searchFile.getlinhas()) {
+				linhas.add(linha);				
+			}
+
+			System.out.println("Number of files founded: " + searchFile.getlinhas().size());
+
+			linhas.add(HtmlMaker.BOTTOM_BODY);
+
+			StringListToFile.exportList(linhas);
 			
 			
 		}
