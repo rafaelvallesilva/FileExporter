@@ -55,6 +55,4 @@ public class StringListToFile {
 		return date;
 	}
 
-	public static void criaTabela() {
-	}
 }

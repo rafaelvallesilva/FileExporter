@@ -21,7 +21,7 @@ public class App {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		Path dir = Paths.get("C:\\Users\\bruno.pansarim\\Documents\\GitHub\\Protheus\\Atual\\Contratos");
+		Path dir = Paths.get("C:\\Users\\bruno.pansarim\\Documents\\GitHub\\Protheus\\Atual");
 
 		String keyEntry = new String();
 
@@ -64,7 +64,7 @@ public class App {
 
 			StringListToFile.exportList(linhas);
 			
-			
+
 		}
 	}
 }
