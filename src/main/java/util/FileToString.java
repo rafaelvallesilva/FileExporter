@@ -1,11 +1,8 @@
 package util;
 
-import java.nio.file.Path;
-import java.text.ParseException;
-
 public class FileToString {
 
-    public static String convert(Path file) throws ParseException {
+    // public static String convert(Path file) throws ParseException {
 
         // Scanner scanner = new Scanner(System.in);
 
@@ -26,11 +23,10 @@ public class FileToString {
 
         // try (BufferedReader br = new BufferedReader(new FileReader(sourceFileString))) {
 
-            String conteudo = new ReadFile().read(file);
-            String[] array = StringUtils.splitCommentBlock(conteudo);
+            // String conteudo = new ReadFile().read(file);
+            // String descricao = StringUtils.getComment(conteudo);
             // System.out.println(array[1]);
 
-            String descricao = array[1];
             // String[] descricao = StringUtils.splitDescricao(array[1]);
 
 
@@ -71,7 +67,7 @@ public class FileToString {
             // scanner.close();
             // }
             // }
-            return descricao;
+            // return descricao;
         }
-    }
+    // }
 
