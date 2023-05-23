@@ -89,7 +89,12 @@ public class SearchFile extends SimpleFileVisitor<Path> {
 				String[] colunas = HtmlMaker.criaColunas(htmlLink, StringUtils.convert(file));
 				String linha = HtmlMaker.criaLinha(colunas);
 
-				linhas.add(linha);
+				String linhaUppercase = linha.toUpperCase();
+
+				if (!linhaUppercase.contains("#DEFINE") || !linhaUppercase.contains("#INCLUDE")) {
+					linhas.add(linha);
+				}
+
 
 			} catch (Exception e) {
 

@@ -2,11 +2,7 @@ package util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 
@@ -46,15 +42,17 @@ public class ReadFile extends SimpleFileVisitor<Path>{
 	}
 
 	private String isoToUtf (String texto) {
-		try {
-			byte[] isoBytes = texto.getBytes("UTF-8");
-			return new String(isoBytes, "UTF-8");
-			// return new String(isoBytes, "ISO-8859-1");
 
-		} catch (UnsupportedEncodingException e) {
+		try {
+			byte[] isoBytes = texto.getBytes(StandardCharsets.UTF_8);
+			return new String(isoBytes, StandardCharsets.UTF_8);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "falha na conversão";
+		
+		// return new String(isoBytes, "ISO-8859-1");
+		// return "falha na conversão";
 		
 	}
 

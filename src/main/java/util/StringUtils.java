@@ -18,12 +18,15 @@ public class StringUtils {
 		comentario = comentario.replace("ÚÚ", "");
 		// comentario = comentario.replace("\\È", "");
 		comentario = comentario.replace("ÜÜ", "");
+		comentario = comentario.replace("Ü", "");
+		comentario = comentario.replace("Ñ", "");
 		comentario = comentario.replace("ßß", "");
 		// comentario = comentario.replace("Ñ", "");
 		// comentario = comentario.replace("ß", "");
 		comentario = comentario.replace("====", "");
 		comentario = comentario.replace("===", "");
 		comentario = comentario.replace("---", "");
+		comentario = comentario.replace("--", "");
 		comentario = comentario.replace("\\|", "");
 		comentario = comentario.replace("\\*|\\|", "");
 		comentario = comentario.replace("\\±±", "");
@@ -42,10 +45,13 @@ public class StringUtils {
 		comentario = comentario.replace("**", "");
 		comentario = comentario.replace("* *", "");
 		comentario = comentario.replace("\\#", "");
+		comentario = comentario.replace("++", "");
+		comentario = comentario.replace("++--", "");
 		comentario = comentario.replace("##", "");
-		comentario = comentario.replace("\\/", "");
-		comentario = comentario.replace("//", "");
+		// comentario = comentario.replace("\\/", "");
+		// comentario = comentario.replace("//", "");
 		comentario = comentario.replace("\\||", "");
+		comentario = comentario.replace("||", "");
 		comentario = comentario.replace("££", "");
 		comentario = comentario.replace("±±", "");
 		comentario = comentario.replace("", "");
@@ -71,7 +77,7 @@ public class StringUtils {
 	public static String getComment(String conteudo) {
 		String[] tokens = splitCommentBlock(conteudo);
 		
-		if(tokens.length > 1 && tokens[0].length() <= 1000) {
+		if(tokens.length > 0 ) {
 
 			// System.out.println("COM COMENTÁRIOS" + tokens[0].length());
 			return tokens[1];
