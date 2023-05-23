@@ -48,7 +48,7 @@ public class ReadFile extends SimpleFileVisitor<Path>{
 	private String isoToUtf (String texto) {
 		try {
 			byte[] isoBytes = texto.getBytes("UTF-8");
-			return new String(isoBytes, "ISO-8859-1");
+			return new String(isoBytes, "UTF-8");
 			// return new String(isoBytes, "ISO-8859-1");
 
 		} catch (UnsupportedEncodingException e) {
