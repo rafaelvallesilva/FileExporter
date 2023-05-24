@@ -11,7 +11,7 @@ public class StringUtils {
 	public static String[] splitCommentBlock(String string) {
 		String[] tokens = string.split("(\\/\\*)|(\\*\\/)");
 		String comentario = tokens[1].replace("/{Protheus.doc}", "");
-		// comentario = comentario.replace("/{protheus.doc}", "");
+		comentario = comentario.replace("/{protheus.doc}", "");
 		comentario = comentario.replace("ÄÄ", "");
 		// comentario = comentario.replace("Ä", "");
 		comentario = comentario.replace("ÀÀ", "");
@@ -21,7 +21,6 @@ public class StringUtils {
 		comentario = comentario.replace("Ü", "");
 		comentario = comentario.replace("Ñ", "");
 		comentario = comentario.replace("ßß", "");
-		// comentario = comentario.replace("Ñ", "");
 		// comentario = comentario.replace("ß", "");
 		comentario = comentario.replace("====", "");
 		comentario = comentario.replace("===", "");
@@ -43,13 +42,13 @@ public class StringUtils {
 		comentario = comentario.replace("º", "");
 		comentario = comentario.replace("°", "");
 		comentario = comentario.replace("**", "");
-		comentario = comentario.replace("* *", "");
+		// comentario = comentario.replace("* *", "");
 		comentario = comentario.replace("\\#", "");
 		comentario = comentario.replace("++", "");
 		comentario = comentario.replace("++--", "");
 		comentario = comentario.replace("##", "");
-		// comentario = comentario.replace("\\/", "");
-		// comentario = comentario.replace("//", "");
+		comentario = comentario.replace("\\/", "");
+		comentario = comentario.replace("//", "");
 		comentario = comentario.replace("\\||", "");
 		comentario = comentario.replace("||", "");
 		comentario = comentario.replace("££", "");
