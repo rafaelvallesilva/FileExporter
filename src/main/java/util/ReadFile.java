@@ -1,59 +1,49 @@
 package util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.nio.charset.StandardCharsets;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 
-public class ReadFile extends SimpleFileVisitor<Path>{
-	
+public class ReadFile extends SimpleFileVisitor<Path> {
+
 	public String read(Path path) {
-		String conteudo = "";
-
-		StringBuilder sb = new StringBuilder();
-		try (BufferedReader reader = new BufferedReader(new FileReader(path.toFile()))) {
-			String line;
-			while((line = reader.readLine()) != null) {
-				sb.append(line);
-			}
-		} catch (Exception e) {
-			System.out.println("readFileException: AAAAA");
-			e.printStackTrace();
-		}
-
-		conteudo = isoToUtf(sb.toString());
-		
-		// try {
-			
-		// 	conteudo = Files.readString(path, Charset.defaultCharset());
-			
-		// } catch (IOException e) {
-		// 	System.out.println("readFileException: AAAAA");
-		// 	e.printStackTrace();
-		// }
-		
-		return conteudo;
+		return convertFileStreamContentToString(path.toFile());
 	}
-	
+
 	public String read(String input) {
 		Path path = Path.of(input);
 		return read(path);
 	}
 
-	private String isoToUtf (String texto) {
+	public String convertFileStreamContentToString(File file) {
 
-		try {
-			byte[] isoBytes = texto.getBytes(StandardCharsets.UTF_8);
-			return new String(isoBytes, StandardCharsets.UTF_8);
-		} catch (Exception e) {
-			e.printStackTrace();
+		int size = (int)file.length();
+		try (InputStream inputstream = new BufferedInputStream(new FileInputStream(file))) {
+			byte[] byteArray = new byte[size];
+			long checkSum = 0L;
+			int nRead;
+			while ((nRead = inputstream.read(byteArray, 0, size)) != -1) {
+				for (int i = 0; i < nRead; i++) {
+					checkSum += byteArray[i];
+				}
+			}
+
+			return new String(byteArray);
+
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException ioe) {
+			// TODO Auto-generated catch block
+			ioe.printStackTrace();
 		}
-		return "falha na conversão";
-		
-		// return new String(isoBytes, "ISO-8859-1");
-		// return "falha na conversão";
-		
+		return null;
+
 	}
 
 }
