@@ -11,9 +11,6 @@ public class HtmlMaker {
             "</head>";
 
     public static final String TOP_BODY = "<body>" +
-            "<h1>" +
-            "Lista de Arquivos" +
-            "</h1>" +
             "<div id='tabela'>" +
             "<table class='table table-dark table-hover'>" +
             "<tr class='título'>" +
