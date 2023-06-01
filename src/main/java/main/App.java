@@ -21,18 +21,27 @@ public class App {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		Path dir = Paths.get("C:\\Users\\bruno.pansarim\\Documents\\GitHub\\Protheus\\Atual");
+		Path root = Paths.get("");
+
+		String rootDir = root.toAbsolutePath().toString();
+		
+		Path parent = Paths.get(rootDir).getParent();
+
+		System.out.println("-----------------_________________----------------");
+		System.out.println(parent);
+
+		Path dir = Paths.get(parent.toString(), "Protheus");
 
 		String keyEntry = new String();
 
 		/**
 		 * Looping soliciting data from the keyboard.
 		 */
-		while (true) {
-			// Print message
-			System.out.print("Type the file's name or extension to search: ");
-			// String receive the keyboard data input
-			keyEntry = util.Console.readString();
+		// while (true) {
+		// 	// Print message
+		// 	System.out.print("Type the file's name or extension to search: ");
+		// 	// String receive the keyboard data input
+			keyEntry = "prw";
 
 			SearchFile searchFile = new SearchFile(keyEntry);
 			try {
@@ -45,7 +54,7 @@ public class App {
 			} catch (Exception e) {
 				System.out.println("Não é possível acessar diretório " + e.getMessage() + ". Motivo: " + e.getCause());
 				e.printStackTrace();
-				continue;
+				// continue;
 			}
 
 			// Print founded files list
@@ -65,6 +74,6 @@ public class App {
 			StringListToFile.exportList(linhas);
 			
 
-		}
+		// }
 	}
 }

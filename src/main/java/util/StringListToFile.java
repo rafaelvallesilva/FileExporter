@@ -29,7 +29,7 @@ public class StringListToFile {
 
 			// Path to save the report adding current date and time to directory name
 			// Path reportPath = Paths.get("exports", "export-" + updateDateNow());
-			Path reportPath = Paths.get("", "" + updateDateNow());
+			Path reportPath = Paths.get(System.getProperty("user.home"), "relatorioPRW" + updateDateNow());
 
 			Files.createDirectories(reportPath);
 			reportPath = Files.write(reportPath.resolve("arquivos.html"), list, StandardOpenOption.CREATE);
